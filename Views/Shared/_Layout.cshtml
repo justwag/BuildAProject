@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("Message Board", "Index", "Start")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        Hello, <span class="username">@Html.Partial("_LogOnPartial")</span>!
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Home", "Index", "Start")</li>
+                            <li>@Html.ActionLink("View Entries", "Index", "MessageBoard")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required:false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            
+        </footer>
+    </body>
+</html>
