@@ -116,13 +116,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\LogOnController.cs" />
     <Compile Include="Controllers\MessageBoardController.cs" />
     <Compile Include="Controllers\StartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\FakeMessageBoardRepository.cs" />
+    <Compile Include="Models\IMessageBoardRepository.cs" />
+    <Compile Include="Models\LogOnModel.cs" />
     <Compile Include="Models\MessageBoardContext.cs" />
     <Compile Include="Models\MessageBoardEntry.cs" />
+    <Compile Include="Models\MessageBoardRepository.cs" />
+    <Compile Include="Models\PostSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +149,10 @@
     <Content Include="Views\MessageBoard\Create.cshtml" />
     <Content Include="Views\MessageBoard\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\MessageBoard\Show.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\MessageBoard\PostSummary.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

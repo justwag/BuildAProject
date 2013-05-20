@@ -9,36 +9,57 @@ namespace BuildAProject.Controllers
 {
     public class MessageBoardController : Controller
     {
-        //
-        // GET: /MessageBoard/
-        private MessageBoardContext _db = new MessageBoardContext();
+        private IMessageBoardRepository _repository;
+
+        public MessageBoardController()
+        {
+            _repository = new MessageBoardRepository();
+        }
+
+        public MessageBoardController(IMessageBoardRepository repository)
+        {
+            _repository = repository;
+        }
 
         public ActionResult Index()
         {
-            var mostRecentEntries =
-                (from entry in _db.Entries
-                 orderby entry.DateAdded descending
-                 select entry).Take(20);
-            ViewBag.Entries = mostRecentEntries.ToList();
-            return View();
+            var mostRecentEntries = _repository.GetMostRecentEntries();
+            return View(mostRecentEntries);
         }
 
         public ActionResult Create()
         {
             return View();
-        }   
+        }
+
         [HttpPost]
         public ActionResult Create(MessageBoardEntry entry)
         {
+            if (ModelState.IsValid)
             {
-                entry.DateAdded = DateTime.Now;
-
-                _db.Entries.Add(entry);
-                _db.SaveChanges();
-
+                _repository.AddEntry(entry);
                 return RedirectToAction("Index");
             }
-         }
 
+            return View(entry);
+        }
+
+        public ViewResult Show(int id)
+        {
+            var entry = _repository.FindById(id);
+
+            bool hasPermission = User.Identity.Name == entry.Name;
+
+            ViewBag.HasPermission = hasPermission;
+
+            return View(entry);
+        }
+
+        public ActionResult PostSummary()
+        {
+            var entries = _repository.GetPostSummary();
+            return View(entries);
+
+        }
     }
 }

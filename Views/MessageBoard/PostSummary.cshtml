@@ -1,0 +1,15 @@
+﻿@model IEnumerable<BuildAProject.Models.PostSummary>
+
+<table>
+    <tr>
+        <th>Number of posts</th>
+        <th>User Name</th>
+    </tr>
+    @foreach(var summaryRow in Model)
+    {
+        <tr>
+            <td>@summaryRow.TotalPosts</td>
+            <td>@summaryRow.UserName</td>
+        </tr>
+    }
+</table>

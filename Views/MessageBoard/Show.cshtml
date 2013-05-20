@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Message Board Entry</h2>
+<dl>
+    <dl>
+        <dt>Name:</dt>
+        <dd>@Model.Name</dd>
+        <dt>Date Added:</dt>
+        <dd>@Model.DateAdded</dd>
+        <dt>Message:</dt>
+        <dd>@Model.Message</dd>
+    </dl>
+</dl>
+
+
+
+<p>
+ 
+    @if (ViewBag.HasPermission)
+    {
+        @Html.ActionLink("Edit", "Edit", new {id = Model.Id})
+    }
+    
+    @Html.ActionLink("Back to Entries", "Index")
+
+</p>
