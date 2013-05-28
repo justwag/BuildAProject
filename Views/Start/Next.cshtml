@@ -1,5 +1,19 @@
-﻿@{
+﻿@model BuildAProject.Models.ViewModels.InputViewModel
+
+@{
     ViewBag.Title = "Next";
 }
 
 <h2>Next</h2>
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+            </hgroup>
+            <p>The current date is @ViewBag.CurrentDate.ToLongDateString()</p>
+            <div class="main-content">
+                <span>@Model.FirstName @Model.LastName</span>
+            </div>
+
+        </div>
+     </section>

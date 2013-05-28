@@ -9,6 +9,18 @@
                 <h2>@ViewBag.Message</h2>
             </hgroup>
             <p>The current date is @ViewBag.CurrentDate.ToLongDateString()</p>
+            <div class="main-content">
+                <span id="section1">Please enter your name.</span>
+               @using (Html.BeginForm("Post", "Start")){
+                <label for="FirstName">First Name:</label>
+                <input type="text" name="FirstName"  />
+                <label for="LastName">Last Name:</label>
+                <input type="text" name="LastName"  />
+                
+                <button type="submit" >Send</button>
+                }
+            </div>
+
         </div>
      </section>
   
